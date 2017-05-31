@@ -1,0 +1,92 @@
+'use strict';
+
+angular.module('metelHealthWebApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ui.router',
+  'ui.bootstrap'
+])
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+    $urlRouterProvider
+      .otherwise('/');
+
+    $locationProvider.html5Mode(true);
+  })
+  .factory('authInterceptor', function ($rootScope, $q, $cookies) {
+    var state;
+    return {
+      // Add authorization token to headers
+      request: function (config) {
+        config.headers = config.headers || {};
+        var token = $cookies.get('token');
+        if (token) {
+          config.headers.Authorization = 'Bearer ' + $cookies.get('token');
+        }
+        return config;
+      },
+      // Intercept 401s and redirect you to login
+      responseError: function (response) {
+        if (response.status === 401) {
+        }
+      }
+    };
+  })
+  .run(function ($rootScope, $window, $http, Auth) {
+    $window.addEventListener('message', function (event) {
+      console.log('接收到消息: ', event.data);
+      var auth_token = event.data.token;
+      var logout = event.data.logout;
+      if (logout) {
+        console.log('确定为退出消息');
+        Auth.logout();
+        $window.location.href = 'http://auth.gddata.net/';
+      }
+      else if (auth_token && auth_token.length > 20) {
+        console.log('确定为登录消息');
+        $http.post('/authapi/auth/login', {token: auth_token, to: Auth.getClientId()})
+          .success(function (data) {
+            if (data && data.token && data.role >= 65536) {
+              Auth.setUser(data);
+              Auth.setToken(data.token);
+              $window.location.reload();
+            }
+            else {
+              if (!data) {
+                console.log('未取得用户');
+              }
+              else if (!data.token) {
+                console.log('用户信息不正确,没有 token');
+              }
+              else if (data.role < 65536) {
+                console.log('权限不够(' + data.role + '低于著录员),不能登录');
+              }
+              //Auth.gotoLogin();
+              Auth.logout();
+            }
+          })
+          .error(function (e) {
+            console.log(e);
+          });
+      }
+      else {
+        console.log('登录消息内容不正确, 不能登录, ', event.data);
+        Auth.logout();
+      }
+    });
+    $rootScope.createLogin = function () {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'http://auth.gddata.net/autologin';
+      document.body.appendChild(iframe);
+    };
+    $rootScope.createLogout = function () {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'http://auth.gddata.net/autologout';
+      document.body.appendChild(iframe);
+    };
+    // Redirect to login if route requires auth and the user is not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      //if (next.authenticate) {
+      //}
+    });
+  });

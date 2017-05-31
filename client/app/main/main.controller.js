@@ -25,7 +25,7 @@
 						$scope.login._checkRole(data);
 					})
 					.error(function (e) {
-						console.log(e);
+						$scope.login.error = '账号密码不正确或服务器内部错误!';
 					});
 			},
 			_checkRole: function (data) {
@@ -37,12 +37,22 @@
 				}
 				else {
 					if (data && data.role && data.role < 262144) {
-						$scope.login.error = '本网站仅用于公司内部人员登录';
+						$scope.login.error = '本网站仅用于公司内部人员且采编员及以上权限登录!';
 					}
 					else {
 						$scope.login.error = '登录出错. ' + data.message;
 					}
 				}
+			},
+			_login: function () {
+				$http.get('/uc3/login/token?clientId=' + Auth.getClientId())
+					.success(function (data) {
+						console.log(data);
+						//$scope.login._checkRole(data);
+					})
+					.error(function (e) {
+						console.log(e);
+					});
 			}
 		}
 	}

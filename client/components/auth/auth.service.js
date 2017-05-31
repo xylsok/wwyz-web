@@ -1,7 +1,6 @@
 'use strict';
-
 angular.module('metelHealthWebApp')
-  .factory('Auth', function Auth($http, $cookies, $rootScope) {
+	.factory('Auth', function Auth($http, $cookies, $rootScope) {
 		var currentUser = {};
 		// App clientId must required. but Secret not.
 		var Secret = '';
@@ -96,13 +95,6 @@ angular.module('metelHealthWebApp')
 			$logout: function () {
 				window.location.href = '/';
 				//$state.go('main');
-			},
-			$forward: function () {
-				var base = window.location.protocol + '//' + window.location.hostname,
-					port = window.location.port,
-					back = base + (port === 80 ? '' : ':' + port);
-				return 'http://auth.gddata.net/login?clientId=' + clientId +
-					'&responseType=code&redirectUri=' + back + '/loginback&ipLogin=1';
 			}
 		};
-  });
+	});

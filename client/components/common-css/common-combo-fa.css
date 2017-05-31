@@ -1,0 +1,50 @@
+/* --------- input band fa icon   ---------- */
+/*                                           */
+/*           Cassandra 2016/09/08            */
+/*                                           */
+/*   <div class="combo-fa-lg">               */
+/*    <input class="form-control input-lg">  */
+/*    <i class="fa fa-asterisk"></i>         */
+/*   </div>                                  */
+/*                                           */
+/* ----------------------------------------- */
+
+.combo-fa-sm, .combo-fa-md, .combo-fa-lg, .combo-fa {
+	position: relative;
+}
+
+.combo-fa-sm > i {
+	color: #999;
+	font-size: 14px;
+	position: absolute;
+	top: 8px;
+	left: 9px;
+}
+
+.combo-fa-md > i, .combo-fa > i {
+	color: #999;
+	font-size: 16px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.combo-fa-lg > i {
+	color: #999;
+	font-size: 20px;
+	position: absolute;
+	top: 13px;
+	left: 13px;
+}
+
+.combo-fa-sm > input {
+	padding-left: 28px;
+}
+
+.combo-fa-md > input, .combo-fa > input {
+	padding-left: 30px;
+}
+
+.combo-fa-lg > input {
+	padding-left: 40px;
+}

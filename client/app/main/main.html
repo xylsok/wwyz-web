@@ -1,22 +1,25 @@
 <navbar></navbar>
-
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="flex-full-view-free">
+	<div class="login-box text-center" ng-if="!currentUser">
+		<!--LOGIN PAD-->
+		<div class="login-pad">
+			<form class="form" name="form" novalidate>
+				<div class="login-title text-center">
+					<div class="product-name">MeTeL课程健康管理平台</div>
+				</div>
+				<h5 class="margin-top-25"><i class="fa fa-info-circle"></i> 系统检测到您还没有登陆,请登陆后操作!</h5>
+				<h5 class="margin-top-25">当前版本:V1.0</h5>
+				<a href="{{auth.$forward()}}" class="btn btn-success btn-metro margin-top-25">
+					<i class="glyphicon glyphicon-log-in"></i> 带我去登录
+				</a>
+			</form>
+		</div>
+	</div>
+	<div class="container" ng-if="currentUser">
+		<div>已登陆</div>
+		<div ng-if="currentUser">
+			{{currentUser}}
+		</div>
+	</div>
 </div>
-
 <footer></footer>

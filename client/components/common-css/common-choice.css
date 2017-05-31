@@ -1,0 +1,100 @@
+/*region ---------- 基础样式 ---------- */
+[class^="common-choice-"] {
+	cursor: pointer;
+	display: inline-block;
+	padding-right: 5px;
+	/*background-color: #00A000;*/
+}
+
+[class^="common-choice-"]:before {
+	color: #999;
+	width: 20px;
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="common-choice-"].active:before {
+	color: #0094ff;
+}
+
+[class^="common-choice-"]:hover:before {
+	color: #0094ff;
+	text-shadow: 0 0 1px #0094ff;
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- checkbox ---------- */
+.common-choice-checkbox:before {
+	content: "\f096";
+}
+
+.common-choice-checkbox.active:before {
+	content: "\f14a";
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- checkbox-o ---------- */
+.common-choice-checkbox-o:before {
+	content: "\f096";
+}
+
+.common-choice-checkbox-o.active:before {
+	content: "\f046";
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- radio ---------- */
+.common-choice-radio:before {
+	content: "\f10c";
+}
+
+.common-choice-radio.active:before {
+	content: "\f192";
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- lock ---------- */
+.common-choice-lock:before {
+	content: "\f023";
+}
+
+.common-choice-lock.active:before {
+	content: "\f13e";
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- heart ---------- */
+.common-choice-heart:before {
+	content: "\f08a";
+}
+
+.common-choice-heart.active:before {
+	content: "\f004";
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- star ---------- */
+.common-choice-star:before {
+	content: "\f006";
+}
+
+.common-choice-star.active:before {
+	content: "\f005";
+}
+
+/* ---------- endregion ---------- */
+
+/*region ---------- name ---------- */
+
+/* ---------- endregion ---------- */

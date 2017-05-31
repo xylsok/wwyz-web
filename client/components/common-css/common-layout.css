@@ -1,0 +1,22 @@
+/*region ---------- flow box ---------- */
+.flow-box {
+	display: block !important;
+	height: auto !important;
+	overflow: visible !important;
+}
+
+.flow-box:before, .flow-box:after {
+	clear: both;
+	display: table;
+	content: " ";
+}
+
+.flowed {
+	float: left;
+}
+
+.flowed-right {
+	float: right !important;
+}
+
+/* ---------- endregion ---------- */

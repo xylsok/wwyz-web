@@ -1,0 +1,203 @@
+/*   x-navbar css by lwt 2016/11/03     */
+/*   1.0.0 init */
+/*   1.0.1 新增oadds所需的橙色样式*/
+
+/*region ----- x-navbar ----- */
+.x-navbar {
+	display: block !important;
+	height: auto !important;
+	overflow: visible !important;
+	font-size: 14px;
+	background-color: #404040;
+}
+
+.x-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+	float: left;
+}
+
+.x-nav > li {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.x-nav > li > a {
+	display: block;
+	color: #bbb;
+	padding: 7px 12px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.x-nav > li > span {
+	display: block;
+	color: #999;
+	padding: 7px 12px;
+	text-decoration: none;
+}
+
+.x-nav > li > a:hover {
+	color: #ffffff;
+}
+
+.x-nav > li > a.active {
+	background-color: #222222;
+	color: #ffffff;
+	box-shadow: inset 0px 0px 10px black;
+}
+
+.x-nav-right {
+	float: right !important;
+}
+
+.x-navbar:after, .x-nav:after {
+	clear: both;
+}
+
+.x-navbar:after, .x-nav:before, .x-nav:after {
+	display: table;
+	content: " ";
+}
+
+/* ----- endregion ----- */
+
+/*region ----- x-navbar-sm ----- */
+.x-navbar-sm {
+	font-size: 12px;
+}
+
+.x-navbar-sm > .x-nav > li > a, .x-navbar-sm > .x-nav > li > span {
+	padding: 5px 10px 4px 10px;
+}
+
+/* ----- endregion ----- */
+
+/*region ----- x-navbar-lg ----- */
+.x-navbar-lg {
+	font-size: 16px;
+}
+
+.x-navbar-lg > .x-nav > li > a, .x-navbar-lg > .x-nav > li > span {
+	padding: 10px 16px;
+}
+
+/* ----- endregion ----- */
+
+/*region ----- x-navbar-edge ----- */
+.x-navbar-edge {
+	background-color: transparent;
+	border-bottom: solid 2px #bbb;
+}
+
+.x-navbar-edge .x-nav {
+	margin-bottom: -2px;
+}
+
+.x-navbar-edge .x-nav > li > a {
+	color: #999;
+}
+
+.x-navbar-edge .x-nav > li > span {
+	color: #bbb;
+}
+
+.x-navbar-edge .x-nav > li > a, .x-navbar-edge .x-nav > li > span {
+	padding: 4px 6px;
+	border-bottom: solid 2px #bbb;
+}
+
+.x-navbar-edge .x-nav > li > a.active {
+	color: #303030;
+	background-color: transparent;
+	border-color: #303030;
+	box-shadow: none;
+}
+
+.x-navbar-edge .x-nav > li > a:hover {
+	color: #303030;
+}
+
+/*-----sm-----*/
+.x-navbar-edge.x-navbar-sm {
+	background-color: transparent;
+	border-bottom: solid 1px #bbb;
+}
+
+.x-navbar-edge.x-navbar-sm .x-nav {
+	margin-bottom: -1px;
+}
+
+.x-navbar-edge.x-navbar-sm .x-nav > li > a, .x-navbar-edge.x-navbar-sm .x-nav > li > span {
+	padding: 2px 5px;
+	border-bottom-width: 1px;
+}
+
+/*-----lg----*/
+.x-navbar-edge.x-navbar-lg .x-nav > li > a, .x-navbar-edge.x-navbar-lg .x-nav > li > span {
+	padding: 4px 8px;
+}
+
+/* ----- endregion ----- */
+
+/*region ----- x-navbar-tower ----- */
+.x-navbar-tower {
+	background-color: transparent;
+	border-bottom: solid 1px #ddd;
+}
+
+.x-navbar-tower .x-nav > li > a {
+	color: #999;
+}
+
+.x-navbar-tower .x-nav > li > span {
+	color: #bbb;
+}
+
+.x-navbar-tower .x-nav > li > a, .x-navbar-tower .x-nav > li > span {
+	padding: 3px 7px;
+	border-bottom: solid 2px transparent;
+}
+
+.x-navbar-tower .x-nav > li > a:hover {
+	color: #303030;
+}
+
+.x-navbar-tower .x-nav > li > a.active {
+	color: #303030;
+	background-color: transparent;
+	border-color: #ddd;
+	box-shadow: none;
+}
+
+/* ----- endregion ----- */
+
+/*region ----- x-navbar-orange ----- */
+.x-navbar-orange {
+	background-color: #dfdfdf;
+	border-bottom: solid 1px #aaa;
+}
+
+.x-navbar-orange .x-nav > li > a {
+	color: #0094ff;
+}
+
+.x-navbar-orange .x-nav > li > span {
+	color: #aaa;
+}
+
+.x-navbar-orange .x-nav > li > a:hover {
+	color: #0094ff;
+	background-color: #eee;
+}
+
+.x-navbar-orange .x-nav > li > a.active {
+	color: #fff;
+	background-color: #FF8D38;
+	box-shadow: none;
+}
+
+/*endregion ----- x-navbar-orange ----- */

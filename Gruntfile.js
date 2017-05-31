@@ -78,11 +78,7 @@ module.exports = function (grunt) {
                         return [
                             modRewrite([
                                 '^/api/(.*)$ http://wankewang.cn:8082/api/$1 [P]',
-                //'^/tapi/(.*)$ http://192.168.1.167:8230/$1 [P]',
-                '^/tapi/(.*)$ http://123.56.254.250:8230/$1 [P]',
-                                '^/authapi/(.*)$ http://123.56.76.155:8080/api/$1 [P]',
-                //'^/file/(.*)$ http://192.168.1.167:8080/api/$1 [P]',
-                '^/file/(.*)$ http://file.gddata.net/api/$1 [P]',
+								'^/auth/(.*)$ http://123.56.76.155:8080/api/$1 [P]',
                                 '^[^\\.]*$ /index.html']),
                             connect.static('.tmp'),
                             connect().use(

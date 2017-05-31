@@ -1,17 +1,35 @@
 <navbar></navbar>
 <div class="flex-full-view-free">
-	<div class="login-box text-center" ng-if="!currentUser">
+	<div class="login-box" ng-if="!currentUser">
 		<!--LOGIN PAD-->
 		<div class="login-pad">
 			<form class="form" name="form" novalidate>
 				<div class="login-title text-center">
-					<div class="product-name">MeTeL课程健康管理平台</div>
+					<div class="product-name">MeTeL健康管理平台</div>
+					<h5>当前版本:V1.0</h5>
 				</div>
-				<h5 class="margin-top-25"><i class="fa fa-info-circle"></i> 系统检测到您还没有登陆,请登陆后操作!</h5>
-				<h5 class="margin-top-25">当前版本:V1.0</h5>
-				<a href="{{auth.$forward()}}" class="btn btn-success btn-metro margin-top-25">
-					<i class="glyphicon glyphicon-log-in"></i> 带我去登录
-				</a>
+				<!--账号-->
+				<div class="form-group x-box">
+					<label class="fa fa-user"></label>
+					<input type="text" name="username" class="form-control" ng-model="login.username"
+						   placeholder="账号" autofocus required
+						   tabindex="1">
+				</div>
+				<!--密码-->
+				<div class="form-group x-box">
+					<label class="fa fa-asterisk"></label>
+					<input type="password" name="password" class="form-control" placeholder="Password"
+						   ng-model="login.password" required tabindex="2">
+				</div>
+				<!--错误-->
+				<div class="form-group" ng-if="login.error">
+					<div class="alert alert-danger"><i class="fa fa-warning"></i> {{login.error}}</div>
+				</div>
+				<div class="text-center">
+					<button class="btn btn-success btn-metro btn-sm" type="submit" ng-click="login._submit()"
+							tabindex="3"><i class="glyphicon glyphicon-log-in"></i> 立 即 登 陆
+					</button>
+				</div>
 			</form>
 		</div>
 	</div>

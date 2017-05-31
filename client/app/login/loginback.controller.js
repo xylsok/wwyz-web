@@ -4,7 +4,7 @@
 		var _t = $location.search()._t;
 		console.log(_t);
 		if (_t) {
-			var url = '/auth/auth/info/' + Auth.getClientId() + '/' + _t;
+			var url = '/uc3/auth/info/' + Auth.getClientId() + '/' + _t;
 			$http.get(url)
 				.success(function (data) {
 					console.log(data);

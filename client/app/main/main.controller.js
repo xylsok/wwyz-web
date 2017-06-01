@@ -1,8 +1,7 @@
 'use strict';
 (function () {
-	function MainController($scope, $http, Auth, $state) {
+	function MainController($scope, $http, Auth, $state,$filter) {
 		$scope.currentUser = Auth.getUser();
-		$scope.auth = Auth;
 		$scope.login = {
 			user: {},
 			error: '',
@@ -43,17 +42,26 @@
 						$scope.login.error = '登录出错. ' + data.message;
 					}
 				}
-			},
-			_login: function () {
-				$http.get('/uc3/login/token?clientId=' + Auth.getClientId())
-					.success(function (data) {
-						console.log(data);
-						//$scope.login._checkRole(data);
-					})
-					.error(function (e) {
-						console.log(e);
-					});
 			}
+		};
+		$scope.core={
+			_getAbnormalCourse:function(){
+				$http.get('/api/health/getcourselist?userid=' + $scope.currentUser.shortName).success(function (data) {
+					var coursedata = data.map(function(x){
+						x.cbDate = $filter('date')(x.cbTime,'yyyy-MM-dd');
+						x.errorLevel=Math.ceil(Math.random()*4);
+						return x;
+					});
+					$scope.core.abnormalCourseSum = coursedata.length;
+					$scope.core.abnormalCourses = _.groupBy(coursedata,function(x){
+						return x.cbDate;
+					});
+					console.log($scope.core.abnormalCourses);
+				})
+			}
+		};
+		if ($scope.currentUser) {
+			$scope.core._getAbnormalCourse();
 		}
 	}
 

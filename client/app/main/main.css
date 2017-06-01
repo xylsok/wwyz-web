@@ -160,3 +160,36 @@
 		margin: 0 auto;
 	}
 }
+.bgc-fff{
+	background-color: #ffffff;
+}
+.course-item-box>div{
+	display: inline-block;
+	margin-right: 10px;
+}
+.open-clent-btn,.corese-name{
+	color: rgb(59, 152, 208);
+}
+.error-level-box{
+	width: 20px;
+	height: 20px;
+	color: #ffffff;
+}
+.point-box{
+	width: 20px;
+	height: 20px;
+	border: 1px solid silver;
+}
+.error-level-four{
+	background-color: rgba(255, 7, 12,1);
+}
+.error-level-three{
+	background-color: rgb(255, 87, 51);
+}
+.error-level-two{
+	background-color: rgb(255, 130, 115);
+}
+.error-level-one{
+	background-color: rgb(255, 226, 221);
+	border: 1px solid #ffc8ad;
+}

@@ -5,7 +5,7 @@
 		<div class="login-pad">
 			<form class="form" name="form" novalidate>
 				<div class="login-title text-center">
-					<div class="product-name">MeTeL健康管理平台</div>
+					<div class="product-name">MeTeL课程及资源健康管理平台</div>
 					<h5>当前版本:V1.0</h5>
 				</div>
 				<!--账号-->
@@ -37,18 +37,24 @@
 		<uib-tabset class="" active="active" type="tabs">
 			<uib-tab class="margin-left-20" heading="有异常的课程" index="0">
 				<div class="margin-left-20 padding-right-20 padding-bottom-20">
-					<h3 class="text-center">我近两个月 采集或修改 的{{core.abnormalCourseSum}}门课程</h3>
+					<h3 class="text-center">我近两个月 采集或修改 的课程
+						<span class="color-red">({{core.abnormalCourseSum}}<i class="fa fa-spinner fa-spin" ng-if="!core.getCoursesPromise.$resolved"></i>)
+						</span>
+					</h3>
 					<div ng-repeat="(k,v) in core.abnormalCourses">
 						<h4>{{k}}</h4>
 						<div class="margin-left-50">
 							<div class="course-item-box" ng-repeat="s in v|orderBy:'cbTime'">
 								<div class="font-size-16 margin-right-10 color-aaa">{{s.cbTime|date:'HH:mm'}}</div>
-								<div class="point-box text-center fa-click" tooltip="课程得分: {{s.point2}}">{{s.point2}}
+								<div ng-click="core._goResorcesPage(s.rno)" class="point-box text-center fa-click"
+									 tooltip="课程得分: {{s.point2}}">{{s.point2}}
 								</div>
-								<div class="error-level-box text-center fa-click" tooltip="有 {{s.errorLevel}} 个错误"
+								<div ng-click="core._goResorcesPage(s.rno)" class="error-level-box text-center fa-click"
+									 tooltip="有 {{s.errorLevel}} 个错误"
 									 ng-class="{'error-level-four':s.errorLevel==4,'error-level-three':s.errorLevel==3,'error-level-two':s.errorLevel==2,'error-level-one':s.errorLevel==1}">
 									{{s.errorLevel}}
 								</div>
+								<div tooltip="主导资源类型" class="text-center mainrestype-box">{{s.mainrestype||'未知'}}</div>
 								<!--<div>{{s.rno}}</div>-->
 								<div class="text-overflow" style="max-width:500px;margin-bottom: -5px;">
 									<a class="color-111"

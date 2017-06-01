@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-	function MainController($scope, $http, Auth, $state,$filter) {
+	function MainController($scope, $http, Auth, $state, $filter,$resource) {
 		$scope.currentUser = Auth.getUser();
 		$scope.login = {
 			user: {},
@@ -44,20 +44,21 @@
 				}
 			}
 		};
-		$scope.core={
-			_getAbnormalCourse:function(){
-				$http.get('/api/health/getcourselist?userid=' + $scope.currentUser.shortName).success(function (data) {
-					var coursedata = data.map(function(x){
-						x.cbDate = $filter('date')(x.cbTime,'yyyy-MM-dd');
-						x.errorLevel=Math.ceil(Math.random()*4);
+		$scope.core = {
+			_getAbnormalCourse: function () {
+				$scope.core.getCoursesPromise = $resource('/api/health/getcourselist?userid=' + $scope.currentUser.shortName).query(function (data) {
+					var coursedata = data.map(function (x) {
+						x.cbDate = $filter('date')(x.cbTime, 'yyyy-MM-dd');
 						return x;
 					});
 					$scope.core.abnormalCourseSum = coursedata.length;
-					$scope.core.abnormalCourses = _.groupBy(coursedata,function(x){
+					$scope.core.abnormalCourses = _.groupBy(coursedata, function (x) {
 						return x.cbDate;
 					});
-					console.log($scope.core.abnormalCourses);
-				})
+				});
+			},
+			_goResorcesPage: function (rno) {
+				$state.go('resource', {rno: rno});
 			}
 		};
 		if ($scope.currentUser) {

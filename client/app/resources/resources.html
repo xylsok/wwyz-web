@@ -1,0 +1,62 @@
+<navbar></navbar>
+<div class="flex-full-view-free">
+	<div class="container">
+		<div class="bgc-fff padding-20">
+			<div class="well well-sm padding-bottom-0">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label  class="col-sm-2 control-label">主导资源类型:</label>
+						<div class="col-sm-2">
+							<input type="text" ng-model="MainrestInfo.type" class="form-control input-sm" >
+						</div>
+						<label  class="col-sm-2 control-label">主导资源预计总数量:</label>
+						<div class="col-sm-2">
+							<input type="text" ng-model="MainrestInfo.count" class="form-control input-sm">
+						</div>
+						<div class="col-sm-4">
+							<a href="#" ng-click="save()" class="btn btn-primary btn-metro btn-sm"> <i class="fa fa-save"></i> 保 存</a>
+							<a href="#" ng-click="refresh()" class="btn btn-default btn-metro btn-sm"> <i class="fa fa-refresh"></i> 刷新本页</a>
+							<a href="#" ng-click="goCourseList()" class="btn btn-default btn-metro btn-sm"> <i class="fa fa-reply"></i> 返回课程列表</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="well well-sm text-center padding-bottom-0">
+				<div class="margin-bottom-4">
+					<span class="font-size-16">资源类型分布:</span>
+						<span ng-repeat="(k,v) in docTypes" class="font-size-16 margin-right-10">
+							<span ng-if="k">{{k}}:</span> <span class="color-red">{{v.length}}</span>
+						</span>
+				</div>
+			</div>
+
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Title</th>
+							<th>DocType</th>
+							<th>FileType</th>
+							<th>FileName</th>
+							<th>FileSize</th>
+							<th>发布</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="s  in resources">
+							<td>{{s.id}}</td>
+							<td>{{s.title}}</td>
+							<td>{{s.doctype}}</td>
+							<td>{{s.filetype}}</td>
+							<td>{{s.filename}}</td>
+							<td>{{s.filesize}}</td>
+							<td>{{s.haspublished}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<footer></footer>

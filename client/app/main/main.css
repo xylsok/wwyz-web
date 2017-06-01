@@ -162,6 +162,7 @@
 }
 .bgc-fff{
 	background-color: #ffffff;
+	min-height: 400px;
 }
 .course-item-box>div{
 	display: inline-block;
@@ -192,4 +193,12 @@
 .error-level-one{
 	background-color: rgb(255, 226, 221);
 	border: 1px solid #ffc8ad;
+}
+.mainrestype-box{
+	padding: 2px 4px 2px 4px;
+	max-width: 40px;
+	height: 20px;
+	border: 1px solid #e8d9c5;
+	font-size: 12px;
+	background-color: #f2e3cf;
 }

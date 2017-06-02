@@ -49,12 +49,14 @@
 				$scope.core.getCoursesPromise = $resource('/api/health/getcourselist?userid=' + $scope.currentUser.shortName).query(function (data) {
 					var coursedata = data.map(function (x) {
 						x.cbDate = $filter('date')(x.cbTime, 'yyyy-MM-dd');
+						x.mainrestype= x.mainrestype?x.mainrestype.substring(0,2):'';
 						return x;
 					});
 					$scope.core.abnormalCourseSum = coursedata.length;
 					$scope.core.abnormalCourses = _.groupBy(coursedata, function (x) {
 						return x.cbDate;
 					});
+					console.log($scope.core.abnormalCourses);
 				});
 			},
 			_goResorcesPage: function (rno) {

@@ -1,0 +1,11 @@
+.user-editor {
+	border-radius: 0;
+}
+
+.user-editor > .modal-content {
+	border-radius: 0;
+}
+
+.organ-info>div{
+	margin-bottom: 6px;
+}

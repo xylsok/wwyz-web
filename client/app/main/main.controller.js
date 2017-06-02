@@ -56,15 +56,18 @@
 					$scope.core.abnormalCourses = _.groupBy(coursedata, function (x) {
 						return x.cbDate;
 					});
-					console.log($scope.core.abnormalCourses);
 				});
 			},
 			_goResorcesPage: function (rno) {
 				$state.go('resource', {rno: rno});
+			},
+			_getCourse:function(){
+				$scope.core.courses = $resource('/api/course/getcourselist?userId='+$scope.currentUser.shortName).query();
 			}
 		};
 		if ($scope.currentUser) {
 			$scope.core._getAbnormalCourse();
+			$scope.core._getCourse();
 		}
 	}
 

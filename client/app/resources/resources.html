@@ -5,18 +5,21 @@
 			<div class="well well-sm padding-bottom-0">
 				<form class="form-horizontal" role="form">
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">主导资源类型:</label>
+						<label class="col-sm-2 control-label">主导资源类型:</label>
 						<div class="col-sm-2">
-							<input type="text" ng-model="MainrestInfo.type" class="form-control input-sm" >
+							<input type="text" ng-model="MainrestInfo.type" class="form-control input-sm">
 						</div>
-						<label  class="col-sm-2 control-label">主导资源预计总数量:</label>
+						<label class="col-sm-2 control-label">主导资源预计总数量:</label>
 						<div class="col-sm-2">
 							<input type="text" ng-model="MainrestInfo.count" class="form-control input-sm">
 						</div>
 						<div class="col-sm-4">
-							<a href="#" ng-click="save()" class="btn btn-primary btn-metro btn-sm"> <i class="fa fa-save"></i> 保 存</a>
-							<a href="#" ng-click="refresh()" class="btn btn-default btn-metro btn-sm"> <i class="fa fa-refresh"></i> 刷新本页</a>
-							<a href="#" ng-click="goCourseList()" class="btn btn-default btn-metro btn-sm"> <i class="fa fa-reply"></i> 返回课程列表</a>
+							<a href="#" ng-click="btnBar.save()" class="btn btn-primary btn-metro btn-sm"> <i
+								class="fa fa-save"></i> 保 存</a>
+							<a href="#" ng-click="btnBar.refresh()" class="btn btn-default btn-metro btn-sm"> <i
+								class="fa fa-refresh"></i> 刷新本页</a>
+							<a href="#" ng-click="btnBar.goCourseList()" class="btn btn-default btn-metro btn-sm"> <i
+								class="fa fa-reply"></i> 返回课程列表</a>
 						</div>
 					</div>
 				</form>
@@ -29,7 +32,6 @@
 						</span>
 				</div>
 			</div>
-
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead>
@@ -47,8 +49,10 @@
 						<tr ng-repeat="s  in resources">
 							<td>{{s.id}}</td>
 							<td>{{s.title}}</td>
-							<td>{{s.doctype}}</td>
-							<td>{{s.filetype}}</td>
+							<td class="text-center">
+								<a href="#" ng-click="core._setDocType(s.id)">{{s.doctype||'--'}}</a>
+							</td>
+							<td><a href="#" ng-click="core._setFileType(s.id)">{{s.filetype||'--'}}</a></td>
 							<td>{{s.filename}}</td>
 							<td>{{s.filesize}}</td>
 							<td>{{s.haspublished}}</td>
@@ -60,3 +64,12 @@
 	</div>
 </div>
 <footer></footer>
+<script type="text/ng-template" id="docTypesTemplate.html">
+	<div style="width: 500px;">
+		<div class="row">
+			<div class="col-sm-3" ng-repeat="s in core.docTypes">
+				{{s.code}}-{{s.name}}
+			</div>
+		</div>
+	</div>
+</script>

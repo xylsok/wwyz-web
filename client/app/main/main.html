@@ -42,6 +42,11 @@
 																			  ng-if="!core.getCoursesPromise.$resolved"></i>)
 						</span>
 					</h3>
+					<div class="text-right" ng-if="core.getCoursesPromise.$resolved">
+						<back-to-top class="back_top" style="position: fixed; top:80%" title="返回顶部">
+							<img class="max-128 fa-click" src="assets/images/timg.png" alt=""/>
+						</back-to-top>
+					</div>
 					<div ng-repeat="(k,v) in core.abnormalCourses">
 						<h4>{{k}}</h4>
 						<div class="margin-left-50">
@@ -77,7 +82,37 @@
 				</div>
 			</uib-tab>
 			<uib-tab heading="我采集的其他课程">
-				ssd
+				<div class="padding-left-20 padding-right-20 padding-bottom-20">
+					<h3 class="text-center">我近三个月采集或修改的课程</h3>
+					<div class="text-right" ng-if="core.getCoursesPromise.$resolved">
+						<back-to-top class="back_top" style="position: fixed; top:80%" title="返回顶部">
+							<img class="max-128 fa-click" src="assets/images/timg.png" alt=""/>
+						</back-to-top>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>名称</th>
+									<th>编号</th>
+									<th>采集时间</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="s  in core.courses">
+									<td width="20px;">{{$index+1}}</td>
+									<td>
+										<a href="http://metel.cn/course/{{s.rno}}" target="_blank">{{s.coursename}}</a>
+										<div class="color-aaa">{{s.coursenamecn}}</div>
+									</td>
+									<td>{{s.courseno}}</td>
+									<td width="100px;">{{s.cbTime|date:'yyyy-MM-dd'}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</uib-tab>
 		</uib-tabset>
 		<div class="text-center">

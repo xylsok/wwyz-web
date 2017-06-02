@@ -2,6 +2,12 @@
 (function () {
 	function ResourcesController($scope, $stateParams, $resource,$state,$http,DocTypeList,FileTypeList) {
 		$scope.resources = $resource('/api/resource/getresourcelist?rno=' + $stateParams.rno).query(function (data) {
+			$scope.noFileSizeCum=0;
+			data.forEach(function(x){
+				if(!x.filesize){
+					$scope.noFileSizeCum++;
+				}
+			});
 			var s = data.map(function (x) {
 				x.docTypeCode = x.doctype && x.doctype.length >= 2 ? x.doctype.substring(0, 2) : '未定义';
 				return x;

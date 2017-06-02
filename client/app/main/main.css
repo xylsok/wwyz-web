@@ -194,6 +194,10 @@
 	background-color: rgb(255, 226, 221);
 	border: 1px solid #ffc8ad;
 }
+.error-level-zero{
+	border: 1px solid #ffc8ad;
+	color: rgb(255, 182, 165);
+}
 .mainrestype-box{
 	padding: 2px 4px 2px 4px;
 	max-width: 40px;

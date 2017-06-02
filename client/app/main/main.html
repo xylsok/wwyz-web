@@ -38,7 +38,8 @@
 			<uib-tab class="margin-left-20" heading="有异常的课程" index="0">
 				<div class="margin-left-20 padding-right-20 padding-bottom-20">
 					<h3 class="text-center">我近两个月 采集或修改 的课程
-						<span class="color-red">({{core.abnormalCourseSum}}<i class="fa fa-spinner fa-spin" ng-if="!core.getCoursesPromise.$resolved"></i>)
+						<span class="color-red">({{core.abnormalCourseSum}}<i class="fa fa-spinner fa-spin"
+																			  ng-if="!core.getCoursesPromise.$resolved"></i>)
 						</span>
 					</h3>
 					<div class="text-right" ng-if="core.getCoursesPromise.$resolved">
@@ -87,7 +88,7 @@
 			<uib-tab heading="我采集的其他课程">
 				<div class="padding-left-20 padding-right-20 padding-bottom-20">
 					<h3 class="text-center">我近三个月采集或修改的课程</h3>
-					<div class="text-right" ng-if="core.getCoursesPromise.$resolved">
+					<div class="text-right" ng-if="core.courses.length">
 						<back-to-top class="back_top" style="position: fixed; top:80%" title="返回顶部">
 							<img class="max-128 fa-click" src="assets/images/timg.png" alt=""/>
 						</back-to-top>

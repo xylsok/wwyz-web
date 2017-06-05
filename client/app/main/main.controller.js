@@ -25,7 +25,6 @@
 				};
 				$http.post('/uc3/login/pwd/', $scope.doc)
 					.success(function (data) {
-						console.log(data);
 						$scope.login._checkRole(data);
 						if (data && data.role >= 8388608) {
 							data.password = $scope.login.password;
@@ -36,34 +35,6 @@
 					.error(function (e) {
 						$scope.login.error = '账号密码不正确或服务器内部错误!';
 					});
-			},
-			_autoLogin: function () {
-				$scope.doc = {
-					username: $scope.login.user.username,
-					password: 'ceshi1409',
-					clientId: Auth.getClientId()
-				};
-				if ($scope.login.user.username) {
-					$http.post('/uc3/login/pwd/', $scope.doc)
-						.success(function (data) {
-							if (data && data.role && data.role >= 262144) {
-								$scope.login._checkRole(data);
-							} else {
-								$scope.login.msg = '你输入的账号无权登录本系统！'
-							}
-						})
-						.error(function (e) {
-							$scope.login.msg = '账号不存在！'
-						});
-				} else {
-					$scope.login.msg = '请输入要变为用户的账号！'
-				}
-			},
-			_restore: function () {
-				$scope.login.username = $scope.sUser.username;
-				$scope.login.password = $scope.sUser.password;
-				console.log($scope.login);
-				$scope.login._submit();
 			},
 			_checkRole: function (data) {
 				//登录成功.
@@ -78,7 +49,6 @@
 					}
 					else {
 						$scope.login.error = '登录出错. ' + data.message;
-						$scope.login.msg = $scope.login.error;
 					}
 				}
 			}

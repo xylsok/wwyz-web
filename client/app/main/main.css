@@ -206,3 +206,8 @@
 	font-size: 12px;
 	background-color: #f2e3cf;
 }
+.copy-msg{
+	color: #00cb00;
+	border: 1px solid #3c3;
+	padding: 2px 4px;
+}

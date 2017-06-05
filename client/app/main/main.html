@@ -76,9 +76,12 @@
 									<a class="open-clent-btn"
 									   ng-href="metel:resource|{{currentUser.shortName}},metel,{{s.rno}}">编辑资源</a>
 								</div>
-								<!--<div>-->
-									<!--<a href="#" class="open-clent-btn">复制RNO</a>-->
-								<!--</div>-->
+								<div>
+									<input type="hidden" id="textrno{{s.rno}}" value="{{s.rno}}"/>
+									<span id="rnoid{{s.rno}}" ng-click="core._copyRno(s)"
+										  class="open-clent-btn fa-click">复制RNO</span>
+									<span class="copy-msg" ng-if="s.copy">{{s.copy}}</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -127,6 +130,5 @@
 		</div>
 	</div>
 </div>
-
 <footer></footer>
 

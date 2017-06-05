@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-	function MainController($scope, $http, Auth, $state, $filter, $resource) {
+	function MainController($scope, $http, Auth, $state, $filter, $resource, $timeout) {
 		$scope.currentUser = Auth.getUser();
 		var sessionUser = sessionStorage.getItem("user");
 		if (sessionUser) {
@@ -77,6 +77,20 @@
 			},
 			_getCourse: function () {
 				$scope.core.courses = $resource('/api/course/getcourselist?userId=' + $scope.currentUser.shortName).query();
+			},
+			_copyRno:function(s){
+				$('#rnoid' + s.rno).zclip({
+					path: 'assets/ZeroClipboard.swf',
+					copy: function () {//复制内容
+						return $('#textrno'+ s.rno).val();
+					},
+					afterCopy: function () {//复制成功
+						s.copy = "复制成功!";
+						var a = $timeout(function () {
+							s.copy = '';
+						}, 2000);
+					}
+				});
 			}
 		};
 		if ($scope.currentUser) {

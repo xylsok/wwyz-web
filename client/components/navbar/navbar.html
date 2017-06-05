@@ -1,28 +1,52 @@
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">MeTeL健康</a>
-    </div>
-    <div uib-collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-if="item.isShow" ui-sref-active="active">
-          <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-if="user && user.userId">
-          <a href="http://auth.gddata.net/" target="_blank"><img class="max-18" ng-src="http://auth.gddata.net/api/user/icon?userId={{user.userId}}"> {{user.shortName || user.nickname || user.userId}}</a>
-        </li>
-        <li>
-		  <li ng-if="user.role>2"><a href="#" ng-click="logout()">退出</a></li>
-        </li>
-      </ul>
-    </div>
-  </div>
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/" class="navbar-brand">MeTeL健康</a>
+		</div>
+		<div uib-collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+			<ul class="nav navbar-nav">
+				<li ng-repeat="item in menu" ng-if="item.isShow" ui-sref-active="active">
+					<a ui-sref="{{item.state}}">{{item.title}}</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-if="user && user.userId">
+					<a href="http://auth.gddata.net/" target="_blank"><img class="max-18"
+																		   ng-src="http://auth.gddata.net/api/user/icon?userId={{user.userId}}">
+						{{user.shortName || user.nickname || user.userId}}</a>
+				</li>
+				<li ng-if="currentUser&&sUser.role>=8388608">
+					<a href="#" uib-popover-template="'finderPopoverTemplate.html'"
+					   popover-append-to-body="1"
+					   popover-placement="bottom"
+					   popover-trigger="outsideClick">变身</a></li>
+				<li ng-if="user.role>2"><a href="#" ng-click="logout()">退出</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
+<script type="text/ng-template" id="finderPopoverTemplate.html">
+	<div >
+		<form ng-submit="login._autoLogin()">
+			<div>我要变身为:</div>
+			<input type="text" width="220px;" ng-model="login.user.username"/>
+			<input type="submit" value="确定" class="btn btn-xs btn-success btn-metro"/>
+			<div ng-if="sUser&&sUser.userId!=currentUser.userId">
+				您已由: {{sUser.nickname}}
+			</div>
+			<div ng-if="sUser&&sUser.userId!=currentUser.userId">
+				变身为: <span class="font-size-16 color-green">{{currentUser.nickname}}({{currentUser.shortName}})</span>
+			</div>
+			<div class="text-center">
+				<a href="#" ng-if="sUser&&sUser.userId!=currentUser.userId" ng-click="login._restore()">我要恢复真身</a>
+			</div>
+			<span class="color-red"><i class="fa fa-info-circle" ng-if="login.msg"></i> {{login.msg}}</span>
+		</form>
+	</div>
+</script>

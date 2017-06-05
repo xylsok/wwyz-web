@@ -34,18 +34,21 @@
 		</div>
 	</div>
 	<div class="container well well-sm margin-bottom-10 text-center font-size-16" ng-if="currentUser.role>=8388608">
-		<span>我要变身为: </span>
-		<input type="text" style="width: 220px;" ng-model="login.user.username"/>
-		<input type="button" value="确定" ng-click="login._autoLogin()" class="btn btn-xs btn-success btn-metro"/>
-		<span ng-if="sUser&&sUser.userId!=currentUser.userId">您已由: {{sUser.nickname}} 变身为:
-			<span class="font-size-30 color-green">{{currentUser.nickname}}({{currentUser.shortName}})</span>
-		</span>
-		<input ng-if="sUser&&sUser.userId!=currentUser.userId"
-			   type="button"
-			   class="btn btn-primary btn-metro btn-xs"
-			   ng-click="login._restore()"
-			   value="我要恢复真身"/>
-		<span class="color-red">{{login.msg}}</span>
+		<form ng-submit="login._autoLogin()">
+			<span>我要变身为: </span>
+			<input type="text" style="width: 220px;" ng-model="login.user.username"/>
+			<input type="submit" value="确定"  class="btn btn-xs btn-success btn-metro"/>
+			<span ng-if="sUser&&sUser.userId!=currentUser.userId">您已由: {{sUser.nickname}} 变身为:
+				<span class="font-size-30 color-green">{{currentUser.nickname}}({{currentUser.shortName}})</span>
+			</span>
+			<input ng-if="sUser&&sUser.userId!=currentUser.userId"
+				   type="button"
+				   class="btn btn-primary btn-metro btn-xs"
+				   ng-click="login._restore()"
+				   value="我要恢复真身"/>
+			<span class="color-red">{{login.msg}}</span>
+		</form>
+
 	</div>
 	<div class="container padding-0 bgc-fff" ng-if="currentUser">
 		<uib-tabset class="" active="active" type="tabs">

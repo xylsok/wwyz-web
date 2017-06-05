@@ -1,23 +1,22 @@
 'use strict';
-
 angular.module('metelHealthWebApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ui.router',
-  'ui.bootstrap'
+	'ngCookies',
+	'ngResource',
+	'ngSanitize',
+	'ui.router',
+	'ui.bootstrap'
 ])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider,$sceDelegateProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider) {
+		$urlRouterProvider
+			.otherwise('/');
 		$locationProvider.html5Mode(true);
 		$sceDelegateProvider.resourceUrlWhitelist([
 			'self',
 			'http://218.246.35.11:81/**',
 			'http://wwww.guodao.cn/**']);
-
-    $locationProvider.html5Mode(true);
-  })
+		$locationProvider.html5Mode(true);
+		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|metel):/);
+	})
 	.factory('authInterceptor', function ($rootScope, $q, $cookies) {
 		var state;
 		return {
@@ -44,10 +43,10 @@ angular.module('metelHealthWebApp', [
 			}
 		};
 	})
-  .run(function ($rootScope, $window, $http, Auth) {
-    // Redirect to login if route requires auth and the user is not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      //if (next.authenticate) {
-      //}
-    });
-  });
+	.run(function ($rootScope, $window, $http, Auth) {
+		// Redirect to login if route requires auth and the user is not logged in
+		$rootScope.$on('$stateChangeStart', function (event, next) {
+			//if (next.authenticate) {
+			//}
+		});
+	});

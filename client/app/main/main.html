@@ -33,7 +33,7 @@
 			</form>
 		</div>
 	</div>
-	<div class="container margin-top-0  margin-bottom-10 text-center font-size-16" ng-if="currentUser.role>=8388608">
+	<div class="container margin-top-0  margin-bottom-10 text-center font-size-16" ng-if="sUser.role>=8388608">
 		<form ng-submit="login._autoLogin()">
 			<span>我要变身为: </span>
 			<input type="text" style="width: 220px;" ng-model="login.user.username"/>
@@ -42,7 +42,7 @@
 				<span class="font-size-16 color-green">{{currentUser.nickname}}({{currentUser.shortName}})</span>
 			</span>
 			<a href="#" ng-if="sUser&&sUser.userId!=currentUser.userId" ng-click="login._restore()">我要恢复真身</a>
-			<span class="color-red">{{login.msg}}</span>
+			<span class="color-red"><i class="fa fa-info-circle" ng-if="login.msg"></i> {{login.msg}}</span>
 		</form>
 	</div>
 	<div class="container padding-0 bgc-fff" ng-if="currentUser">

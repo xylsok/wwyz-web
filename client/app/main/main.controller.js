@@ -2,6 +2,10 @@
 (function () {
 	function MainController($scope, $http, Auth, $state, $filter, $resource) {
 		$scope.currentUser = Auth.getUser();
+		var sessionUser = sessionStorage.getItem("user");
+		if(sessionUser){
+			$scope.sUser = JSON.parse(sessionUser);
+		}
 		$scope.login = {
 			user: {},
 			error: '',
@@ -21,11 +25,44 @@
 				};
 				$http.post('/uc3/login/pwd/', $scope.doc)
 					.success(function (data) {
+						console.log(data);
 						$scope.login._checkRole(data);
+						if (data && data.role >= 8388608) {
+							data.password= $scope.login.password;
+							data.username= $scope.login.username;
+							sessionStorage.setItem("user", JSON.stringify(data));
+						}
 					})
 					.error(function (e) {
 						$scope.login.error = '账号密码不正确或服务器内部错误!';
 					});
+			},
+			_autoLogin:function(){
+				$scope.doc = {
+					username: $scope.login.user.username,
+					password: 'ceshi1409',
+					clientId: Auth.getClientId()
+				};
+				if($scope.login.user.username){
+					$http.post('/uc3/login/pwd/', $scope.doc)
+						.success(function (data) {
+							$scope.login._checkRole(data);
+						})
+						.error(function (e) {
+							$scope.login.msg='账号不存在！'
+						});
+				}else{
+					$scope.login.msg='请输入要变为用户的账号！'
+				}
+
+			},
+			_restore:function(){
+
+				$scope.login.username =$scope.sUser.username;
+				$scope.login.password=$scope.sUser.password;
+				console.log($scope.login);
+				$scope.login._submit();
+
 			},
 			_checkRole: function (data) {
 				//登录成功.
@@ -79,7 +116,7 @@
 	angular.module('metelHealthWebApp')
 		.controller('MainController', MainController);
 	angular.module('metelHealthWebApp')
-		.config(['ngClipProvider', function(ngClipProvider) {
-		ngClipProvider.setPath("../bower_components/zeroclipboard/dist/ZeroClipboard.swf");
-	}]);
+		.config(['ngClipProvider', function (ngClipProvider) {
+			ngClipProvider.setPath("../bower_components/zeroclipboard/dist/ZeroClipboard.swf");
+		}]);
 })();

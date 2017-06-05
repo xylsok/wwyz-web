@@ -33,6 +33,20 @@
 			</form>
 		</div>
 	</div>
+	<div class="container well well-sm margin-bottom-10 text-center font-size-16" ng-if="currentUser.role>=8388608">
+		<span>我要变身为: </span>
+		<input type="text" style="width: 220px;" ng-model="login.user.username"/>
+		<input type="button" value="确定" ng-click="login._autoLogin()" class="btn btn-xs btn-success btn-metro"/>
+		<span ng-if="sUser&&sUser.userId!=currentUser.userId">您已由: {{sUser.nickname}} 变身为:
+			<span class="font-size-30 color-green">{{currentUser.nickname}}({{currentUser.shortName}})</span>
+		</span>
+		<input ng-if="sUser&&sUser.userId!=currentUser.userId"
+			   type="button"
+			   class="btn btn-primary btn-metro btn-xs"
+			   ng-click="login._restore()"
+			   value="我要恢复真身"/>
+		<span class="color-red">{{login.msg}}</span>
+	</div>
 	<div class="container padding-0 bgc-fff" ng-if="currentUser">
 		<uib-tabset class="" active="active" type="tabs">
 			<uib-tab class="margin-left-20" heading="有异常的课程" index="0">
@@ -53,7 +67,7 @@
 							<div class="course-item-box" ng-repeat="s in v|orderBy:'cbTime'">
 								<div class="font-size-16 margin-right-10 color-aaa">{{s.cbTime|date:'HH:mm'}}</div>
 								<!--<div ng-click="core._goResorcesPage(s.rno)" class="point-box text-center fa-click"-->
-									 <!--uib-tooltip="课程得分: {{s.point2}}">{{s.point2}}-->
+								<!--uib-tooltip="课程得分: {{s.point2}}">{{s.point2}}-->
 								<!--</div>-->
 								<div ng-click="core._goResorcesPage(s.rno)" class="error-level-box text-center fa-click"
 									 uib-tooltip="有 {{s.errorLevel}} 个错误"

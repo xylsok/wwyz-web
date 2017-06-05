@@ -4,7 +4,8 @@ angular.module('metelHealthWebApp', [
 	'ngResource',
 	'ngSanitize',
 	'ui.router',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'ngClipboard'
 ])
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider) {
 		$urlRouterProvider

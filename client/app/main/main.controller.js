@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-	function MainController($scope, $http, Auth, $state, $filter, $resource, $timeout) {
+	function MainController($scope, $http, Auth, $state, $filter, $resource, $timeout,$window) {
 		$scope.currentUser = Auth.getUser();
 		var sessionUser = sessionStorage.getItem("user");
 		if (sessionUser) {
@@ -73,7 +73,9 @@
 				});
 			},
 			_goResorcesPage: function (rno) {
-				$state.go('resource', {rno: rno});
+				var url = $state.href('resource',{rno: rno});
+				$window.open(url, '_blank');
+				//$state.go('resource', {rno: rno});
 			},
 			_getCourse: function () {
 				$scope.core.courses = $resource('/api/course/getcourselist?userId=' + $scope.currentUser.shortName).query();

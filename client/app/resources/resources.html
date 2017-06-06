@@ -12,20 +12,26 @@
 				<form class="form-horizontal" role="form">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">主导资源类型:</label>
-						<div class="col-sm-2">
+						<div class="col-sm-1">
 							<input type="text" ng-model="MainrestInfo.type" class="form-control input-sm">
 						</div>
 						<label class="col-sm-2 control-label">主导资源预计总数量:</label>
-						<div class="col-sm-2">
+						<div class="col-sm-1">
 							<input type="text" ng-model="MainrestInfo.count" class="form-control input-sm">
 						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-6">
 							<a href="#" ng-click="btnBar.save()" class="btn btn-primary btn-metro btn-sm"> <i
 								class="fa fa-save"></i> 保 存</a>
 							<a href="#" ng-click="btnBar.refresh()" class="btn btn-default btn-metro btn-sm"> <i
 								class="fa fa-refresh"></i> 刷新本页</a>
 							<a href="#" ng-click="btnBar.goCourseList()" class="btn btn-default btn-metro btn-sm"> <i
-								class="fa fa-reply"></i> 返回课程列表</a>
+								class="fa fa-reply"></i> 返回首页</a>
+							<a class="btn btn-default btn-metro btn-sm" href="metel:course|metel_course,{{rno}}">
+								<i class="fa fa-pencil"></i> 编辑课程</a>
+							<a class="btn btn-default btn-metro btn-sm"
+							   ng-href="metel:resource|{{currentUser.shortName}},metel,{{rno}}">
+								<i class="fa fa-edit"></i> 编辑资源
+							</a>
 						</div>
 					</div>
 				</form>

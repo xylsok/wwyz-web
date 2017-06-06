@@ -54,7 +54,15 @@
 					共有资源 <span class="color-red">{{resources.length}}</span> 个,其中有 <span class="color-red">{{noFileSizeCum}}</span>
 					个FileSize为非真值。
 				</div>
-				<h4>RNO: {{health.rno}}</h4>
+				<div class="margin-bottom-10 font-size-16">
+					<span>RNO: {{health.rno}}</span>
+					<a id="rnoid" href="#"   ng-click="copyRno._copyRno()"  class="btn btn-xs btn-metro btn-default">
+						<i class="fa fa-copy"></i> 复制
+					</a>
+					<span class="copy-msg" ng-if="copyRno.msg"><img class="max-18" src="assets/images/checkmark.png"
+																	alt=""/> {{copyRno.msg}}</span>
+				</div>
+				<input type="button" value="ssss" ng-mousedown="test()" ng-mouseup="test()"/>
 			</div>
 			<div class="text-right" ng-if="resources && resources.length">
 				<back-to-top class="back_top" style="position: fixed; top:80%" title="返回顶部">

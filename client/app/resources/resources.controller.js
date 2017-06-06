@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-	function ResourcesController($scope, $stateParams, $resource, $state, $http, DocTypeList, FileTypeList,Auth) {
+	function ResourcesController($scope, $stateParams,$timeout, $resource, $state, $http, DocTypeList, FileTypeList,Auth) {
 		$scope.currcenUser = Auth.getUser();
 		$scope.rno = $stateParams.rno;
 		$scope.resources = $resource('/api/resource/getresourcelist?rno=' + $stateParams.rno).query(function (data) {
@@ -55,6 +55,23 @@
 				$state.go('main');
 			}
 		};
+		$scope.copyRno={
+			msg:'',
+			_copyRno:function(){
+				$('#rnoid').zclip({
+					path: 'assets/images/ZeroClipboard.swf',
+					copy: function () {//复制内容
+						return $stateParams.rno;
+					},
+					afterCopy: function () {//复制成功
+						$scope.copyRno.msg = "复制成功!";
+						var a = $timeout(function () {
+							$scope.copyRno.msg = "";
+						}, 2000);
+					}
+				});
+			}
+		}
 		$scope.core = {
 			docTypes: [
 				{name: '课程介绍', code: 'CI'},

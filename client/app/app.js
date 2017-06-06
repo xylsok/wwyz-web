@@ -7,7 +7,7 @@ angular.module('metelHealthWebApp', [
 	'ui.bootstrap',
 	"ngClipboard"
 ])
-	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider,ngClipProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider, ngClipProvider) {
 		$urlRouterProvider
 			.otherwise('/');
 		$locationProvider.html5Mode(true);
@@ -17,7 +17,7 @@ angular.module('metelHealthWebApp', [
 			'http://wwww.guodao.cn/**']);
 		$locationProvider.html5Mode(true);
 		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|metel):/);
-		ngClipProvider.setPath("../bower_components/zeroclipboard/dist/ZeroClipboard.swf");
+		ngClipProvider.setPath("assets/images/ZeroClipboard.swf");
 	})
 	.factory('authInterceptor', function ($rootScope, $q, $cookies) {
 		var state;

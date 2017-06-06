@@ -229,7 +229,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/assets/fonts'
                 ],
                 patterns: {
-                    js: [[/(assets\/images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
+                    js: [[/(assets\/images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg|swf))/g, 'Replacing references to images']]
                 }
             }
         },

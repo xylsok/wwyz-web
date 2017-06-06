@@ -77,10 +77,12 @@
 									   ng-href="metel:resource|{{currentUser.shortName}},metel,{{s.rno}}">编辑资源</a>
 								</div>
 								<div>
-									<input type="hidden" id="textrno{{s.rno}}" value="{{s.rno}}"/>
-									<span id="rnoid{{s.rno}}" ng-click="core._copyRno(s)"
-										  class="open-clent-btn fa-click">  复制RNO</span>
-									<span class="copy-msg" ng-if="s.copy"><img class="max-18" src="assets/images/checkmark.png" alt=""/> {{s.copy}}</span>
+									<input type="hidden" class="form-control" placeholder="Enter text to copy"
+										   ng-model="s.rno">
+									<span class="open-clent-btn fa-click" ng-click="core._copyRno(s)" clip-copy="s.rno">复制RNO</span>
+									<span class="copy-msg" ng-if="s.copy">
+										<img class="max-18" src="assets/images/checkmark.png"/> {{s.copy}}
+									</span>
 								</div>
 							</div>
 						</div>

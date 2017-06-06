@@ -81,18 +81,10 @@
 				$scope.core.courses = $resource('/api/course/getcourselist?userId=' + $scope.currentUser.shortName).query();
 			},
 			_copyRno:function(s){
-				$('#rnoid' + s.rno).zclip({
-					path: 'assets/images/ZeroClipboard.swf',
-					copy: function () {//复制内容
-						return $('#textrno'+ s.rno).val();
-					},
-					afterCopy: function () {//复制成功
-						s.copy = "复制成功!";
-						var a = $timeout(function () {
-							s.copy = '';
-						}, 2000);
-					}
-				});
+				s.copy = "复制成功!";
+				var a = $timeout(function () {
+					s.copy = '';
+				}, 1000);
 			}
 		};
 		if ($scope.currentUser) {

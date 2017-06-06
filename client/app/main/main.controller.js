@@ -82,7 +82,7 @@
 			},
 			_copyRno:function(s){
 				$('#rnoid' + s.rno).zclip({
-					path: 'assets/ZeroClipboard.swf',
+					path: 'assets/images/ZeroClipboard.swf',
 					copy: function () {//复制内容
 						return $('#textrno'+ s.rno).val();
 					},

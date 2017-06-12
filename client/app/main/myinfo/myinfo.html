@@ -1,25 +1,94 @@
 <navbar></navbar>
 <div class="flex-full-view-free">
-	<div class="container  ">
+	<div class="container  padding-left-30 padding-right-30 padding-top-20 padding-bottom-20 bgc-fff">
+		<h4>头像修改:</h4>
+		<hr>
 		<div class="row">
 			<div class="col-sm-8">
-				<div class="margin-bottom-10 ">请上传图像: <input type="file" class="bnt btn-xs btn-metro" id="fileInput"/>
+				<div class="margin-bottom-10 text-center">
+					<input type="file" class="bnt btn-xs btn-metro" id="fileInput"/>
 				</div>
-				<div class="cropArea">
-					<img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+				<div class="cropArea text-center">
+					<div class="margin-top-150 font-size-18"  ng-if="!myImage">请选择一张图片<br>仅支持JPG、PNG、GIF、JPEG、BMP</div>
+					<img-crop image="myImage" ng-click="selectFun()"  result-image="myCroppedImage"></img-crop>
 				</div>
 				<div class="margin-top-25">
 					<a href="#" class="btn btn-default btn-sm btn-metro" value="">返回首页</a>
-					<input type="button" class="btn btn-success btn-sm btn-metro" ng-click="upload()" value="保存"/>
+					<input type="button" class="btn btn-success btn-sm btn-metro" ng-click="upload()" value="保 存"/>
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div>裁剪后的图像:</div>
-				<div style="border: 1px solid silver; width:200px;height:200px;border-radius: 100px;">
-					<img ng-src="{{myCroppedImage}}"/>
+				<div class="margin-top-100">
+					<img class="touxiang" ng-if="select" ng-src="http://file.xylsok.com/wwyz-file/{{user.icon}}"/>
+					<img class="touxiang" ng-if="!select" ng-src="{{myCroppedImage}}"/>
 				</div>
 			</div>
 		</div>
+		<h4 class="margin-top-30">基本信息:</h4>
+		<hr>
+		<form class="form-horizontal" role="form">
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">账号</label>
+				<div class="col-sm-5">
+					<input type="email" class="form-control input-sm" ng-model="user.userName" placeholder="邮箱">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">邮箱</label>
+				<div class="col-sm-5">
+					<input type="email" class="form-control input-sm" ng-model="user.email" placeholder="邮箱">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">昵称</label>
+				<div class="col-sm-5">
+					<input type="email" class="form-control input-sm" ng-model="user.niceName" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">手机</label>
+				<div class="col-sm-5">
+					<input type="email" class="form-control input-sm" ng-model="user.phone" >
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<a href="/main" class="btn btn-default btn-metro">返回首页</a>
+					<button type="submit" class="btn btn-success btn-metro" ng-click="core._submit()">保 存</button>
+				</div>
+			</div>
+		</form>
+		<h4 class="margin-top-30">密码安全:</h4>
+		<hr>
+		<form class="form-horizontal" role="form">
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">原密码</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control input-sm" ng-model="user.password">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">新密码</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control input-sm" ng-model="user.email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">确认密码</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control input-sm" ng-model="user.email" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<a href="/main" class="btn btn-default btn-metro">返回首页</a>
+					<button type="submit" class="btn btn-success btn-metro" ng-click="core._submit()">保 存</button>
+				</div>
+			</div>
+		</form>
 	</div>
 </div>
 <footer></footer>

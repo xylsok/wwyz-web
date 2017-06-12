@@ -1,6 +1,14 @@
 .cropArea{
-	background: #E4E4E4;
+	background: #f4f4f4;
 	overflow: hidden;
 	width:500px;
 	height:350px;
+}
+.touxiang{
+	border: 1px solid silver;
+	width:200px;
+	height:200px;
+	max-width: 200px;
+	max-height: 200px;
+	border-radius: 100px;
 }

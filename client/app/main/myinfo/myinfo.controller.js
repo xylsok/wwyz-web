@@ -24,6 +24,10 @@
 				$state.go('myinfo', null, {reload: true});
 			})
 		}
+		$scope.select=true;
+		$scope.selectFun=function () {
+			$scope.select=false;
+		}
 	}
 
 	angular.module('wwyzWebApp')

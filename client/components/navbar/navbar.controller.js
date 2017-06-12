@@ -39,7 +39,7 @@ angular.module('metelHealthWebApp')
 				$http.post('/uc3/login/pwd/', $scope.doc)
 					.success(function (data) {
 						$scope.login._login(data);
-						if (data && data.role >= 8388608) {
+						if (data && data.role >= 1048576) {
 							data.password = $scope.login.password;
 							data.username = $scope.login.username;
 							sessionStorage.setItem("user", JSON.stringify(data));

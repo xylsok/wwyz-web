@@ -9,7 +9,7 @@
 			</button>
 			<a href="/" class="navbar-brand">WWYZ</a>
 		</div>
-		<div uib-collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+		<!--<div uib-collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
 				<li ng-repeat="item in menu" ng-if="item.isShow" ui-sref-active="active">
 					<a ui-sref="{{item.state}}">{{item.title}}</a>
@@ -28,10 +28,33 @@
 				</li>
 				<li ng-if="currentUser"><a href="/main" ng-click="logout()">退出</a></li>
 			</ul>
+		</div>-->
+		<div class="navbar-right-bg">
+			<div class="container">
+				<ul class="navbar-right margin-bottom-0 nav-li-right">
+					<!--<li class="margin-right-30 nav-li-right-a"><a href="{{auth.$forward()}}">{{animationFont.value}}</a></li>-->
+					<li uib-dropdown dropdown-append-to-body ng-if="currentUser">
+						<a href="#" role="button" class="dropdown-toggle margin-right-30" uib-dropdown-toggle>
+							<img class="max-20 nav-user"
+								 ng-src="http://auth.gddata.net/api/user/icon?userId=gddev">
+							{{currentUser.userName ||currentUser.nickName || currentUser.email}} <i
+							class="fa fa-angle-down"></i>
+						</a>
+						<!--<a href="#" ng-click="auth.$logout()">注销2</a>-->
+						<ul role="menu" class="dropdown-menu" uib-dropdown-menu>
+							<li><a href="#">我的资料</a></li>
+							<li><a href="#">我的收藏</a></li>
+							<li><a href="#">我的历史记录</a></li>
+							<li ng-if="currentUser"><a href="#" ng-click="logout()">退出</a></li>
+						</ul>
+					</li>
+					<li ng-if="!currentUser"><a href="/login">登录</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
-<script type="text/ng-template" id="finderPopoverTemplate.html">
+<!--<script type="text/ng-template" id="finderPopoverTemplate.html">
 	<div>
 		<form ng-submit="login._autoLogin()">
 			<div>我要变身为:</div>
@@ -56,4 +79,4 @@
 		<a href="https://helpx.adobe.com/flash-player/kb/enabling-flash-player-chrome.html" target="_blank">如何开启？</a>
 		<a href="https://get.adobe.com/cn/flashplayer/" target="_blank">我要安装</a>
 	</div>
-</script>
+</script>-->

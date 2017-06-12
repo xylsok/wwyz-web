@@ -52,8 +52,8 @@
 						<div class="margin-left-50">
 							<div class="course-item-box" ng-repeat="s in v|orderBy:'cbTime'">
 								<div class="font-size-16 margin-right-10 color-aaa">{{s.cbTime|date:'HH:mm'}}</div>
-								<!--<div ng-click="core._goResorcesPage(s.rno)" class="point-box text-center fa-click"-->
-								<!--uib-tooltip="课程得分: {{s.point2}}">{{s.point2}}-->
+								<div ng-click="core._goResorcesPage(s.rno)" class="point-box text-center fa-click"
+								uib-tooltip="课程得分: {{s.point2}}">{{s.point2}}
 								<!--</div>-->
 								<div ng-click="core._goResorcesPage(s.rno)" class="error-level-box text-center fa-click"
 									 uib-tooltip="有 {{s.errorLevel}} 个错误"

@@ -21,8 +21,6 @@ angular.module('wwyzWebApp')
 				if (u) {
 					var user = JSON.parse(u);
 					if (user && user.userName && t) {
-
-						//console.log('getUser',user);
 						return user;
 					}
 				}
@@ -36,24 +34,6 @@ angular.module('wwyzWebApp')
 			},
 			setToken: function (t) {
 				$cookies.put('token', t);
-			},
-			isAnonymous: function () {
-				var user = this.getUser();
-				if (user === null || !user.role) {
-					return true;
-				}
-				return user.role > 1 ? false : true;
-			},
-			getAuthorize: function () {
-				var user = this.getUser();
-				return user ? dbnameSplit(user.dbCode) : [];
-			},
-			hasAuthorize: function (dbParams) {
-				var myAuth = this.getAuthorize(),
-					inAuth = dbnameSplit(dbParams),
-					result = _.intersection(this.getAuthorize(), inAuth);
-				//console.log('用户权限判断 = ', myAuth, inAuth, result);
-				return result.length > 0;
 			},
 			$logout: function () {
 				window.location.href = '/';

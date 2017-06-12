@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="/" class="navbar-brand">MeTeL健康</a>
+			<a href="/" class="navbar-brand">WWYZ</a>
 		</div>
 		<div uib-collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
@@ -16,20 +16,14 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li ng-if="user && user.userId">
+				<li >
 					<a href="http://auth.gddata.net/" target="_blank"><img class="max-18"
 																		   ng-src="http://auth.gddata.net/api/user/icon?userId={{user.userId}}">
-						{{user.shortName || user.nickname || user.userId}}</a>
+						{{user.shortName || user.nickname || user.userId}}user</a>
 				</li>
-				<li ng-if="currentUser&&sUser.role>=8388608">
-					<a href="#" uib-popover-template="'finderPopoverTemplate.html'"
-					   popover-append-to-body="1"
-					   popover-placement="bottom"
-					   popover-trigger="outsideClick">变身</a></li>
-				<!--<li ng-if="currentUser"><a href="#" uib-popover-template="'finderPopoverTemplate2.html'"
-					   popover-append-to-body="1"
-					   popover-placement="bottom"
-					   popover-trigger="outsideClick">复制RNO的说明</a></li>-->
+				<li>
+					<a href="/register">注册</a>
+				</li>
 				<li ng-if="currentUser"><a href="#" ng-click="logout()">退出</a></li>
 			</ul>
 		</div>

@@ -2,13 +2,13 @@
 angular.module('wwyzWebApp')
 	.controller('NavbarCtrl', function ($scope, $rootScope, Auth, $state, $http) {
 		$scope.menu = [{
-			'title': '课程列表',
+			'title': '首页',
 			'state': 'main',
 			'isShow': true
 		}, {
-			'title': '课程资源列表',
-			'state': 'resource',
-			'isShow': $state.current.name == 'resource'
+			'title': '注册',
+			'state': 'register',
+			'isShow': $state.current.name == 'register'
 		}];
 		$scope.isCollapsed = true;
 		$scope.user = Auth.getUser();

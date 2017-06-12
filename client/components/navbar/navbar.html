@@ -36,13 +36,13 @@
 					<li uib-dropdown dropdown-append-to-body ng-if="currentUser">
 						<a href="#" role="button" class="dropdown-toggle margin-right-30" uib-dropdown-toggle>
 							<img class="max-20 nav-user"
-								 ng-src="http://auth.gddata.net/api/user/icon?userId=gddev">
+								 ng-src="{{currentUser.icon}}">
 							{{currentUser.userName ||currentUser.nickName || currentUser.email}} <i
 							class="fa fa-angle-down"></i>
 						</a>
 						<!--<a href="#" ng-click="auth.$logout()">注销2</a>-->
 						<ul role="menu" class="dropdown-menu" uib-dropdown-menu>
-							<li><a href="#">我的资料</a></li>
+							<li><a href="/myinfo">我的资料</a></li>
 							<li><a href="#">我的收藏</a></li>
 							<li><a href="#">我的历史记录</a></li>
 							<li ng-if="currentUser"><a href="#" ng-click="logout()">退出</a></li>

@@ -1,7 +1,26 @@
 <navbar></navbar>
 <div class="flex-full-view-free">
 	<div class="container  ">
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="margin-bottom-10 ">请上传图像: <input type="file" class="bnt btn-xs btn-metro" id="fileInput"/>
+				</div>
+				<div class="cropArea">
+					<img-crop image="myImage" result-image="myCroppedImage" result-image-size="128"></img-crop>
+				</div>
 
+				<div class="margin-top-25">
+					<a href="#" class="btn btn-default btn-sm btn-metro" value="">返回首页</a>
+					<input type="button" class="btn btn-success btn-sm btn-metro" ng-click="upload()" value="保存"/>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div>裁剪后的图像:</div>
+				<div style="border: 1px solid silver; width:200px;height:200px;border-radius: 100px;">
+					<img ng-src="{{myCroppedImage}}"/>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <footer></footer>

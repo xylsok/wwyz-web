@@ -5,7 +5,8 @@ angular.module('wwyzWebApp', [
 	'ngSanitize',
 	'ui.router',
 	'ui.bootstrap',
-	"ngClipboard"
+	"ngClipboard",
+	"ngImgCrop"
 ])
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider, ngClipProvider) {
 		$urlRouterProvider

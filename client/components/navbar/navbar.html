@@ -17,14 +17,16 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li >
-					<a href="http://auth.gddata.net/" target="_blank"><img class="max-18"
-																		   ng-src="http://auth.gddata.net/api/user/icon?userId={{user.userId}}">
-						{{user.shortName || user.nickname || user.userId}}user</a>
+					<a href="#" target="_blank"><img class="max-18" ng-src="http://auth.gddata.net/api/user/icon?userId={{user.userId}}">
+						{{currentUser.nickName || user.username || user.email}}</a>
 				</li>
 				<li>
-					<a href="/register">注册</a>
+					<a href="/login" ng-if="!currentUser">登陆</a>
 				</li>
-				<li ng-if="currentUser"><a href="#" ng-click="logout()">退出</a></li>
+				<li>
+					<a href="/register" ng-if="!currentUser">注册</a>
+				</li>
+				<li ng-if="currentUser"><a href="/main" ng-click="logout()">退出</a></li>
 			</ul>
 		</div>
 	</div>

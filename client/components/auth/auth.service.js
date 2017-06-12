@@ -20,7 +20,7 @@ angular.module('wwyzWebApp')
 				var t = $cookies.get('token');
 				if (u) {
 					var user = JSON.parse(u);
-					if (user && user.userId && t) {
+					if (user && user.userName && t) {
 
 						//console.log('getUser',user);
 						return user;
@@ -37,49 +37,12 @@ angular.module('wwyzWebApp')
 			setToken: function (t) {
 				$cookies.put('token', t);
 			},
-			ipLoginUser: function () {
-				return $http.get('/auth/user/login/ip?clientId=' + clientId);
-			},
 			isAnonymous: function () {
 				var user = this.getUser();
 				if (user === null || !user.role) {
 					return true;
 				}
 				return user.role > 1 ? false : true;
-			},
-			login: function (user) {
-				var self = this;
-				var deferred = $q.defer();
-				var parameter = {
-					username: user.username,
-					password: user.password,
-					grantType: 'username',
-					clientId: clientId
-				};
-				$http.post('/auth/user/login', parameter)
-					.success(function (data) {
-						//console.log('data', data);
-						if (data.role) {
-							var _storage = {
-								userId: data.userId,
-								username: data.username,
-								nickname: data.nickname,
-								oid: data.oid,
-								role: data.role
-							};
-							self.setUser(_storage);
-							self.setToken(data.token);
-							self.__log__(data);
-							deferred.resolve(data);
-						}
-						else {
-							deferred.reject('');
-						}
-					})
-					.error(function (err) {
-						deferred.reject(err);
-					}.bind(this));
-				return deferred.promise;
 			},
 			getAuthorize: function () {
 				var user = this.getUser();

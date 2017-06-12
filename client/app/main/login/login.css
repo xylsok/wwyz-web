@@ -48,6 +48,13 @@
 	margin: 100px auto;
 	width: 400px;
 }
+.login-bg {
+	background: url(/assets/images/loginbj.jpg) center center;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+}
+
 
 @media (max-width: 480px) {
 	.login-box {

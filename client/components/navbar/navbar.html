@@ -36,7 +36,7 @@
 					<li uib-dropdown dropdown-append-to-body ng-if="currentUser">
 						<a href="#" role="button" class="dropdown-toggle margin-right-30" uib-dropdown-toggle>
 							<img class="max-20 nav-user"
-								 ng-src="{{currentUser.icon}}">
+								 ng-src="http://auth.gddata.net/api/user/icon?userId=gddev">
 							{{currentUser.userName ||currentUser.nickName || currentUser.email}} <i
 							class="fa fa-angle-down"></i>
 						</a>

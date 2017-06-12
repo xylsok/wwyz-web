@@ -1,5 +1,5 @@
 'use strict';
-angular.module('metelHealthWebApp')
+angular.module('wwyzWebApp')
 	.factory('Auth', function Auth($http, $cookies, $rootScope) {
 		var currentUser = {};
 		// App clientId must required. but Secret not.

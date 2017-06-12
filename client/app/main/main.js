@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('metelHealthWebApp')
+angular.module('wwyzWebApp')
   .config(function($stateProvider) {
     $stateProvider
       .state('main', {

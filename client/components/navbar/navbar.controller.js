@@ -1,5 +1,5 @@
 'use strict';
-angular.module('metelHealthWebApp')
+angular.module('wwyzWebApp')
 	.controller('NavbarCtrl', function ($scope, $rootScope, Auth, $state, $http) {
 		$scope.menu = [{
 			'title': '课程列表',

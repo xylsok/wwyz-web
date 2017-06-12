@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('metelHealthWebApp')
+angular.module('wwyzWebApp')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

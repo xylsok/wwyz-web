@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('metelHealthWebApp')
+angular.module('wwyzWebApp')
   .directive('footer', function () {
     return {
       templateUrl: 'components/footer/footer.html',

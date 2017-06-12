@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('metelHealthWebApp')
+angular.module('wwyzWebApp')
   .directive('navbar', function () {
     return {
       templateUrl: 'components/navbar/navbar.html',

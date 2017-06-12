@@ -1,5 +1,5 @@
 'use strict';
-angular.module('metelHealthWebApp', [
+angular.module('wwyzWebApp', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',

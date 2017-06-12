@@ -33,6 +33,11 @@
 					.error(function (e) {
 						$scope.login.error = '账号密码不正确或服务器内部错误!';
 					});
+			},
+			_submit2:function(){
+				$scope.login.username='zhangzf';
+				$scope.login.password='111111';
+				$scope.login._submit();
 			}
 		};
 	}

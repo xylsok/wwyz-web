@@ -14,8 +14,7 @@ angular.module('wwyzWebApp', [
 		$locationProvider.html5Mode(true);
 		$sceDelegateProvider.resourceUrlWhitelist([
 			'self',
-			'http://218.246.35.11:81/**',
-			'http://wwww.guodao.cn/**']);
+			'http://218.246.35.11:81/**']);
 		$locationProvider.html5Mode(true);
 		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|metel):/);
 		ngClipProvider.setPath("assets/images/ZeroClipboard.swf");

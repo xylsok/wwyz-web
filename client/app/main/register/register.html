@@ -1,19 +1,22 @@
+<!--
 <navbar></navbar>
 <div class="flex-full-view-free">
-	<div class="container  ">
-		<div class="padding-20 bgc-fff">
+	<div class="container  bgc-fff">
+		<div class="padding-20  margin-top-150">
 			<form class="form-horizontal" role="form">
-
 				<div class="form-group">
 					<label class="col-sm-2 control-label">邮箱</label>
-					<div class="col-sm-10">
+					<div class="col-sm-4">
 						<input type="email" class="form-control input-sm" ng-model="core.user.email" placeholder="邮箱">
+					</div>
+					<div class="col-sm-4">
+						<span ng-if="core.error" class="alert alert-danger col-sm-6">{{core.error}}</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<a href="/main" class="btn btn-default btn-metro">回首页</a>
-						<button type="submit" class="btn btn-default btn-metro" ng-click="core._submit()">立即注册</button>
+						<button type="submit" class="btn btn-success btn-metro" ng-click="core._submit()">立即注册</button>
 					</div>
 				</div>
 			</form>
@@ -21,3 +24,36 @@
 	</div>
 </div>
 <footer></footer>
+-->
+
+<!--<navbar></navbar>-->
+<div class="flex-full-view-free reg-bg">
+	<div class="login-box margin-top-250" ng-if="!currentUser">
+		<!--LOGIN PAD-->
+		<div class="login-pad">
+			<form class="form" name="form" novalidate>
+				<div class="login-title text-center">
+					<div class="product-name">注册就是这么简单</div>
+				</div>
+				<!--账号-->
+				<div class="form-group x-box">
+					<label class="fa fa-user"></label>
+					<input type="text" name="username" class="form-control" ng-model="core.user.email"
+						   placeholder="邮箱" autofocus required
+						   tabindex="1">
+				</div>
+
+				<!--错误-->
+				<div class="form-group" ng-if="core.error">
+					<div class="alert alert-danger"><i class="fa fa-warning"></i> {{core.error}}</div>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-success btn-metro" ng-click="core._submit()">立即注册</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--<footer></footer>-->
+
+
